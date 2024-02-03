@@ -11,7 +11,7 @@ def leaf_year(y):
         else:
             return True
 
-days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+days = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 if m == 2 and d == 29 and not leaf_year(y):
     print(-1)
