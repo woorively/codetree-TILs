@@ -13,12 +13,12 @@ def leaf_year(y):
 
 if m == 2 and d == 29 and not leaf_year(y):
     print(-1)
-
-if m in (12, 1, 2):
-    print("Winter")
-elif m in (3, 4, 5):
-    print("Spring")
-elif m in (6, 7, 8):
-    print("Summer")
 else:
-    print("Fall")
+    if m in (12, 1, 2):
+        print("Winter")
+    elif m in (3, 4, 5):
+        print("Spring")
+    elif m in (6, 7, 8):
+        print("Summer")
+    else:
+        print("Fall")
