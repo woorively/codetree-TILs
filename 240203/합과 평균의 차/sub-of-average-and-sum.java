@@ -12,9 +12,9 @@ public class Main {
         b = sc.nextInt();
         c = sc.nextInt();
 
-        int tot = a + b + c;
-
         // 출력
-        System.out.printf("%d\n%d\n%d", tot, (int)(double)(tot) / 3, tot - (int)(double)(tot) / 3);
+        System.out.println(a + b + c);
+        System.out.println((a + b + c) / 3);
+        System.out.println((a + b + c) - (a + b + c) / 3);
     }
 }
