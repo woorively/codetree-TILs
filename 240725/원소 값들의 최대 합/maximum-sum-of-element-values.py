@@ -15,8 +15,11 @@ for num in nums:
     # 현재 숫자를 temp 저장
     temp = num
     for _ in range(m-1):
+        
         total += nums[temp - 1]
-        temp = nums[nums.index(temp) - 1]
-
+        temp = nums[temp - 1]
+        
     ans = max(ans, total)
+
+
 print(ans)
