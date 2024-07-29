@@ -12,7 +12,7 @@ public class Main {
 
         int ans = -1;
 
-        for (int i=n-1; i>=0; i--){
+        for (int i=cnt.length-1; i>=0; i--){
             if (cnt[i] == 1) {
                 ans = i;
                 break;
