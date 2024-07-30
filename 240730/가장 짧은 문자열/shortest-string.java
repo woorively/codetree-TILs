@@ -8,7 +8,7 @@ public class Main {
         String str2 = sc.next();
         String str3 = sc.next();
            
-        int[] lens = {str1.length(), str3.length(), str3.length()};
+        int[] lens = {str1.length(), str2.length(), str3.length()};
         Arrays.sort(lens);
         System.out.print(lens[2] - lens[0]);
     }
