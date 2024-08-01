@@ -6,6 +6,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         char alpha = sc.next().charAt(0);
 
-        System.out.print((char) (alpha-1));
+        if (alpha == 'a'){
+            System.out.print('z');
+        } else {
+            System.out.print((char) (alpha-1));
+        }
+        
     }
 }
