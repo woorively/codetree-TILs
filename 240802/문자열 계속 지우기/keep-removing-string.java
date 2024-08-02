@@ -11,6 +11,7 @@ public class Main {
         int lenB = strB.length();
 
         while (true){
+            int idx = -1;
             int candidates = lenA - lenB + 1;
             for(int i = 0; i < candidates; i++) {
                 boolean isSame = true;
