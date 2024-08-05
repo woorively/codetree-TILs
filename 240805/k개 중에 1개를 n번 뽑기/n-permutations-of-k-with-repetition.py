@@ -15,4 +15,4 @@ def choose(curr_num):
 
     return
 
-choose(1)
+choose(k-1)
