@@ -2,7 +2,7 @@ k, n = tuple(map(int, input().split()))
 ans = []
 
 def choose(curr_num):
-    if curr_num == n+1:
+    if curr_num == n:
         for e in ans:
             print(e, end=" ")
         print()
@@ -15,4 +15,4 @@ def choose(curr_num):
 
     return
 
-choose(1)
+choose(0)
