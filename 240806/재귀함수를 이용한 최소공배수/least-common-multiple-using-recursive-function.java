@@ -6,11 +6,13 @@ public class Main {
         int n = s.nextInt();
         int ans = 0;
 
+        int[] arr = new int[n];
+        
         int num1 = s.nextInt();
         for (int i=0; i<n-1; i++){
             int num2 = s.nextInt();
-            ans = (num1 * num2) / gcd(num1, num2);
-            num1 = (num1 * num2) / gcd(num1, num2);
+            ans = lcm(num1, num2);
+            num1 = ans;
         }
 
         System.out.println(ans);
@@ -22,4 +24,9 @@ public class Main {
 
         return gcd(b, a%b);
     }
+
+    static int lcm(int a, int b){
+        return (a*b)/gcd(a, b);
+    }
+
 }
