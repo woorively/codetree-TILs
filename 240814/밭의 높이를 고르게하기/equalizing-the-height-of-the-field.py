@@ -4,8 +4,8 @@ n, h, t = tuple(map(int, input().split()))
 height = list(map(int, input().split()))
 
 ans = sys.maxsize
-height.sort()
-for i in range(n-t):
+
+for i in range(n-t+1):
     tmp = 0
     for j in range(i, i + t):
         tmp += abs(height[j] - h)
