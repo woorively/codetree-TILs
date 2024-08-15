@@ -23,7 +23,7 @@ ans = 0
 max_cnt = 0
 for r in range(n):
     for c in range(n):
-        for k in range(n):
+        for k in range(2 * n):
             cnt = get_gold(r, c, k)
 
             if cnt > max_cnt:
