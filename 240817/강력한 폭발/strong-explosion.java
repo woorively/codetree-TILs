@@ -49,13 +49,23 @@ public class Main {
                         total++;
                     }
                     
-                    for (int k=0; k<n; k++){
-                        if (isVisited[k][j]){
-                            continue;
-                        }
-                        isVisited[k][j] = true;
+                    if (inRange(i+1, j) && !isVisited[i+1][j]) {
+                        isVisited[i+1][j] = true;
+                        total++;
+                    } 
+                    if (inRange(i-1, j) && !isVisited[i-1][j]) {
+                        isVisited[i-1][j] = true;
+                        total++;
+                    } 
+                    if (inRange(i+2, j) && !isVisited[i+2][j]) {
+                        isVisited[i+2][j] = true;
+                        total++;
+                    } 
+                    if (inRange(i-2, j) && !isVisited[i-2][j]) {
+                        isVisited[i-2][j] = true;
                         total++;
                     }
+
                     idx++;
                 } else if (grid[i][j] == -1 && bNums.get(idx) == 2) {
                     if (!isVisited[i][j]) {
