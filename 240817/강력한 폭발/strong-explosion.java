@@ -34,7 +34,7 @@ public class Main {
 
     // 폭탄의 영역을 계산해주는 함수
     public static int countArea(){
-        int total = 1;
+        int total = 0;
         boolean[][] isVisited = new boolean[n][n];
         int idx = 0;
 
