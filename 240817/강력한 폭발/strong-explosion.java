@@ -44,8 +44,11 @@ public class Main {
                     return total;
 
                 if (grid[i][j] == -1 && bNums.get(idx) == 1){
-                    isVisited[i][j] = true;
-                    total++;
+                    if (!isVisited[i][j]) {
+                        isVisited[i][j] = true;
+                        total++;
+                    }
+                    
                     for (int k=0; k<n; k++){
                         if (isVisited[k][j]){
                             continue;
@@ -55,37 +58,47 @@ public class Main {
                     }
                     idx++;
                 } else if (grid[i][j] == -1 && bNums.get(idx) == 2) {
-                    isVisited[i][j] = true;
-                    total++;
+                    if (!isVisited[i][j]) {
+                        isVisited[i][j] = true;
+                        total++;
+                    }
 
                     if (inRange(i+1, j) && !isVisited[i+1][j]) {
                         isVisited[i+1][j] = true;
                         total++;
-                    } else if (inRange(i-1, j) && !isVisited[i-1][j]) {
+                    } 
+                    if (inRange(i-1, j) && !isVisited[i-1][j]) {
                         isVisited[i-1][j] = true;
                         total++;
-                    } else if (inRange(i, j+1) && !isVisited[i][j+1]) {
+                    } 
+                    if (inRange(i, j+1) && !isVisited[i][j+1]) {
                         isVisited[i][j+1] = true;
                         total++;
-                    } else if (inRange(i, j-1) && !isVisited[i][j-1]) {
+                    } 
+                    if (inRange(i, j-1) && !isVisited[i][j-1]) {
                         isVisited[i][j-1] = true;
                         total++;
                     }
                     idx++;
                 } else if (grid[i][j] == -1 && bNums.get(idx) == 3) {
-                    isVisited[i][j] = true;
-                    total++;
+                    if (!isVisited[i][j]) {
+                        isVisited[i][j] = true;
+                        total++;
+                    }
 
                     if (inRange(i+1, j+1) && !isVisited[i+1][j+1]) {
                         isVisited[i+1][j+1] = true;
                         total++;
-                    } else if (inRange(i-1, j-1) && !isVisited[i-1][j-1]) {
+                    } 
+                    if (inRange(i-1, j-1) && !isVisited[i-1][j-1]) {
                         isVisited[i-1][j-1] = true;
                         total++;
-                    } else if (inRange(i-1, j+1) && !isVisited[i-1][j+1]) {
+                    } 
+                    if (inRange(i-1, j+1) && !isVisited[i-1][j+1]) {
                         isVisited[i-1][j+1] = true;
                         total++;
-                    } else if (inRange(i+1, j-1) && !isVisited[i+1][j-1]) {
+                    } 
+                    if (inRange(i+1, j-1) && !isVisited[i+1][j-1]) {
                         isVisited[i+1][j-1] = true;
                         total++;
                     }
