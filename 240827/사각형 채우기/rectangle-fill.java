@@ -15,10 +15,10 @@ public class Main {
             if (i==1 || i==2 || i==3){
                 dp[i]=i;
             } else {
-                dp[i] = dp[i-1] + dp[i-2];
+                dp[i] = (dp[i-1] + dp[i-2]) % 10007;
             }
         }
 
-        System.out.println(dp[n] % 10007);
+        System.out.println(dp[n]);
     }
 }
