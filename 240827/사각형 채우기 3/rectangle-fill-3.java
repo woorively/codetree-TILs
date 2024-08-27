@@ -5,7 +5,7 @@ public class Main {
         Scanner s = new Scanner(System.in);
 
         int n = s.nextInt();
-        int[] dp = new int[n+1];
+        long[] dp = new long[n+1];
 
         dp[0] = 1;
         dp[1] = 2;
