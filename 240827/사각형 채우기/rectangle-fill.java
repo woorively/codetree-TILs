@@ -15,7 +15,7 @@ public class Main {
             if (i==1 || i==2 || i==3){
                 dp[i]=i;
             } else {
-                dp[i] = dp[i-1] * 2 - 1;
+                dp[i] = dp[i-1] + dp[i-2];
             }
         }
 
