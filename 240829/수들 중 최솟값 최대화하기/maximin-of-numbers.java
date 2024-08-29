@@ -2,55 +2,69 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    static int n, minMaxNum = -1;
-    static int[] nums;
+    static int n;
     static int[][] map;
-
+    static int[] arr;
+    static int answer;
+    static int result=0;
+    static boolean[] visited;
+    static int a;
+    static int b;
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        n = s.nextInt();
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        answer=Integer.MAX_VALUE;
+        visited = new boolean[n];
         map = new int[n][n];
-        for (int i=0; i<n; i++){
-            for (int j=0; j<n; j++){
-                map[i][j] = s.nextInt();
+        arr = new int[n];
+        a=0;
+        for(int i = 0 ; i < n ; i ++){
+            for(int j = 0 ; j<n;j++) {
+                map[i][j] = sc.nextInt();
             }
         }
-
-        nums = new int[n];
-        fill(0);
-        System.out.println(minMaxNum);
+        recur(0,0);
+        
+        System.out.println(b);
     }
-
-    static void fill(int idx) {
-        if (idx == n) {
-            minMaxNum = Math.max(minMaxNum, mini());
-//            System.out.println(Arrays.toString(nums));
+    static void recur(int depth,int at){
+        if(depth == n){
+            // System.out.println(answer +" "+result+Arrays.toString(arr));
+                answer= Math.min(answer,result);
+                a=arr[0];
+                for(int i = 1 ; i <n;i++) {
+                    if(a>arr[i]) {
+                        a=arr[i];
+                        
+                    }
+                    b=Math.max(b, a);
+                }
+            
             return;
         }
+        
+        
+        for(int i = at ; i < n ; i++){
+            if(!visited[i]) {
+                visited[i]=true;
+                arr[i] = map[depth][i];
+                result += arr[i];
+                if(promising(depth)){
+                    recur(depth+1,at+1);
+                    result-=arr[i];
+                }
+                visited[i]=false;
+            }
             
-
-        for (int i=0; i<n; i++){
-            nums[idx] = i;
-            if (check(idx)) {
-                fill(idx+1);
+        }
+    }
+    static boolean promising(int depth) {
+        for(int i = 0 ; i <depth;i++) {
+            if(depth == i) { // || ㅜㅜ) {
+                return false;
             }
         }
-    }
-
-    static int mini() {
-        int mNum = map[0][nums[0]];
-        for (int i=1; i<n; i++){
-            mNum = Math.min(map[i][nums[i]], mNum);
-        }
-
-        return mNum;
-    }
-
-    static boolean check(int idx){
-        for (int i=0; i<idx; i++){
-            if (nums[idx] == nums[i])
-                return false;
-        }
         return true;
+
     }
 }
