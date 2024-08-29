@@ -43,6 +43,8 @@ public class Main {
     }
     
     static int calc() {
+    	if (costMap[0][result[0]+1] == 0 || costMap[result[result.length-1]+1][0] == 0)
+    		return Integer.MAX_VALUE;
         // 앞 뒤의 값
         int cost = costMap[0][result[0]+1] + costMap[result[result.length-1]+1][0];
 
