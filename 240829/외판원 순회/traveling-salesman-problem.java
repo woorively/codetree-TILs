@@ -47,9 +47,12 @@ public class Main {
         int cost = costMap[0][result[0]+1] + costMap[result[result.length-1]+1][0];
 
         for (int i=0; i<result.length-1; i++){
+        	if (costMap[result[i]+1][result[i+1]+1] == 0)
+        		return Integer.MAX_VALUE;
             cost += costMap[result[i]+1][result[i+1]+1];
+            
         }
-
+//		System.out.println(cost);
         return cost;
     }
 }
