@@ -22,13 +22,13 @@ public class Main {
 
     static void combination(int idx, int sidx) {
         if (sidx == n) {
+            // System.out.println(Arrays.toString(used));
             calc();
             return;
         }
 
         for (int i=idx; i<2*n; i++) {
             used[i] = true;
-            // System.out.println(Arrays.toString(used));
             combination(i+1, sidx+1);
             used[i] = false;
         }
