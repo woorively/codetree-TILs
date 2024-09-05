@@ -11,16 +11,18 @@ class Edge {
 }
 
 public class Main {
-    static final int MAX_N = 5;
-    static int[][] graph = new int[MAX_N+1][MAX_N+1];
-    static boolean[] visited = new boolean[MAX_N+1];
-    static int[] dist = new int[MAX_N+1];
+    static int[][] graph;
+    static boolean[] visited;
+    static int[] dist;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int m = sc.nextInt();
         
+        graph = new int[n+1][n+1];
+        visited = new boolean[n+1];
+        dist = new int[n+1];
         // 주어진 간선 정보 (x, y, z)
         // x -> y로 향하는 간선이 있으며, 가중치는 z 
         Edge[] edges = new Edge[m+1];
