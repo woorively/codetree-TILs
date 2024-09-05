@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.PriorityQueue;
 
 class Edge {
     int x, y, z;
@@ -15,58 +14,58 @@ public class Main {
     static int[][] graph;
     static boolean[] visited;
     static int[] dist;
-    static final int INF = Integer.MAX_VALUE;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int m = sc.nextInt();
         
-        graph = new int[n + 1][n + 1];
-        visited = new boolean[n + 1];
-        dist = new int[n + 1];
-        
-        for (int i = 1; i <= m; i++) {
+        graph = new int[n+1][n+1];
+        visited = new boolean[n+1];
+        dist = new int[n+1];
+        // 주어진 간선 정보 (x, y, z)
+        // x -> y로 향하는 간선이 있으며, 가중치는 z 
+        Edge[] edges = new Edge[m+1];
+
+        for (int i=1; i<=m; i++) {
+            // int x = edges[i].x;
+            // int y = edges[i].y;
+            // int z = edges[i].z;
             int x = sc.nextInt();
             int y = sc.nextInt();
             int z = sc.nextInt();
             graph[x][y] = z;
+            edges[i] = new Edge(x, y, z);
         }
 
-        for (int i = 1; i <= n; i++) {
-            dist[i] = INF;
+        for (int i=1; i<=n; i++) {
+            dist[i] = (int)1e9;
         }
 
         dist[1] = 0;
 
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[1], b[1]));
-        pq.offer(new int[]{1, 0});
+        for (int i=1; i<=n; i++) {
+            int minIdx = -1;
+            for (int j=1; j<=n; j++) {
+                if (visited[j]) continue;
 
-        while (!pq.isEmpty()) {
-            int[] current = pq.poll();
-            int node = current[0];
-            int d = current[1];
+                if (minIdx == -1 || dist[minIdx] > dist[j])
+                    minIdx = j;
+            }
 
-            if (visited[node]) continue;
-            visited[node] = true;
+            visited[minIdx] = true;
+            for (int j=1; j<=n; j++) {
+                if (graph[minIdx][j] == 0) continue;
 
-            for (int next = 1; next <= n; next++) {
-                if (graph[node][next] > 0) {
-                    int newDist = dist[node] + graph[node][next];
-                    if (newDist < dist[next]) {
-                        dist[next] = newDist;
-                        pq.offer(new int[]{next, newDist});
-                    }
-                }
+                dist[j] = Math.min(dist[j], dist[minIdx] + graph[minIdx][j]);
             }
         }
 
-        for (int i = 2; i <= n; i++) {
-            if (dist[i] == INF) {
-                System.out.println(-1);
-            } else {
-                System.out.println(dist[i]);
-            }
+        for (int i=2; i<=n; i++) {
+            if (dist[i] == (int)1e9) System.out.println(-1);
+            else System.out.println(dist[i]);
         }
+
     }
+    
 }
