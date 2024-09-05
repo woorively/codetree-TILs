@@ -60,7 +60,7 @@ public class Main {
         }
 
         for (int i=2; i<=n; i++) {
-            if (!visited[i]) System.out.println(-1);
+            if (dist[i] == Integer.MAX_VALUE) System.out.println(-1);
             else System.out.println(dist[i]);
         }
 
