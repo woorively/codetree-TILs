@@ -7,7 +7,7 @@ public class Main {
         int n = sc.nextInt(); // 동전의 수
         int m = sc.nextInt(); // 금액
 
-        int[] coins = new int[n];
+        int[] coins = new int[n+1];
         for (int i = 0; i < n; i++) {
             coins[i] = sc.nextInt(); // 동전의 값을 입력받음
         }
