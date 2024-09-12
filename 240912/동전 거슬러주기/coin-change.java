@@ -18,13 +18,13 @@ public class Main {
 
         for (int i = 1; i <= m; i++) {
             for (int j=1; j<=n; j++) {
-                if (i >= coin[j]) {
-                    dp[i] = Math.min(dp[i], dp[i - coin[j]] + 1);
+                if (i >= coins[j]) {
+                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
                 }
             }
         }
 
-        
+
         if (dp[m] == Integer.MAX_VALUE) {
             System.out.println(-1); // 금액을 만들 수 없는 경우
         } else {
