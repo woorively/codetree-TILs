@@ -17,7 +17,7 @@ public class Main {
             for (int j=0; j<coins.length; j++) {
                 int coin = coins[j];
 
-                if (i > coin) {
+                if (i >= coin) {
                     maxCnt = Math.max(maxCnt, dp[i-coin]+1);
                 }
 
