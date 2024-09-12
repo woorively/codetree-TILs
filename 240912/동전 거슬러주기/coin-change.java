@@ -17,13 +17,14 @@ public class Main {
         dp[0] = 0; // 금액 0을 만드는 데 필요한 동전 수는 0
 
         for (int i = 1; i <= m; i++) {
-            for (int coin : coins) {
-                if (i >= coin && dp[i - coin] != Integer.MAX_VALUE) {
-                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+            for (int j=1; j<=n; j++) {
+                if (i >= coin[j]) {
+                    dp[i] = Math.min(dp[i], dp[i - coin[j]] + 1);
                 }
             }
         }
 
+        
         if (dp[m] == Integer.MAX_VALUE) {
             System.out.println(-1); // 금액을 만들 수 없는 경우
         } else {
