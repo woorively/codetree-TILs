@@ -18,7 +18,7 @@ public class Main {
 
         for (int i = 1; i <= m; i++) {
             for (int coin : coins) {
-                if (i >= coin) {
+                if (i >= coin && dp[i - coin] != Integer.MAX_VALUE) {
                     dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
