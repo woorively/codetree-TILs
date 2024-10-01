@@ -1,28 +1,37 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.HashMap;
 
 public class Main {
+    public static final int MAX_N = 100000;
+    
+    // 변수 선언
+    public static int n, m;
+    public static String[] words = new String[MAX_N + 1];
+    public static HashMap<String, Integer> StringToNum = new HashMap<>();
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-
-        String[] arr = new String[n+1];
-        HashMap<String, Integer> map = new HashMap<>();
-
-        for (int i=1; i<=n; i++) {
-            String str = sc.next();
-            arr[i] = str;
-            map.put(str, i);
+        // 입력:
+        n = sc.nextInt();
+        m = sc.nextInt();
+        
+        // 각 숫자의 대응되는 문자를 array에,
+        // 각 문자의 대응되는 숫자를 hashmap에 기록해줍니다.
+        for(int i = 1; i <= n; i++) {
+            words[i] = sc.next();
+            StringToNum.put(words[i], i);
         }
 
-        for (int i=0; i<m; i++) {
-            String inputStr = sc.next();
+        while(m-- > 0) {
+            String key = sc.next();
 
-            if (map.containsKey(inputStr)) {
-                System.out.println(map.get(inputStr));
-            } else {
-                System.out.println(arr[Integer.parseInt(inputStr)]);
-            }
+            // 입력된 값이 숫자일 때에는 array에 저장한 문자를 출력합니다.
+            if('0' <= key.charAt(0) && key.charAt(0) <= '9')
+                System.out.println(words[Integer.parseInt(key)]);
+            
+            // 입력된 값이 문자일 때에는 hashmap에 기록된 대응되는 숫자를 출력합니다.
+            else
+                System.out.println(StringToNum.get(key));
         }
     }
 }
