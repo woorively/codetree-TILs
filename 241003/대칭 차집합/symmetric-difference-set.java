@@ -18,11 +18,11 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        int cnt = 0;
+        int ans = n + m;
         for (int i=0; i<m; i++) {
-            if (hs.contains(arr[i])) cnt++;
+            if (hs.contains(arr[i])) ans -= 2;
         }
 
-        System.out.println(n + m - cnt*2);
+        System.out.println(ans);
     }
 }
