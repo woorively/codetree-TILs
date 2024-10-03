@@ -21,7 +21,7 @@ public class Main {
             if (hs.contains(arr[i])) {
                 System.out.print("1 ");
             } else {
-                System.out.println("0 ");
+                System.out.print("0 ");
             }
         }
     }
