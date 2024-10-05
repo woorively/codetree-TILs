@@ -17,10 +17,9 @@ public class Main {
         for (int i=0; i<n; i++) {
             int num = sc.nextInt();
 
-            if (ts.lower(num) == null) {
+            if (ts.floor(num) == null) {
                 break;
             }
-
             ts.remove(ts.floor(num));
             cnt++;
         }
