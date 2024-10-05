@@ -7,8 +7,8 @@ public class Main {
 
         int t = sc.nextInt();
 
-        TreeSet ts = new TreeSet<>();
         for (int tc=0; tc<t; tc++) {
+            TreeSet ts = new TreeSet<>();
             int k = sc.nextInt();
 
             for (int i=0; i<k; i++) {
@@ -21,7 +21,7 @@ public class Main {
                     int num = sc.nextInt();
 
                     if (ts.isEmpty()) continue;
-                    
+
                     if (num == 1) {
                         ts.remove(ts.last());
                     } else {
