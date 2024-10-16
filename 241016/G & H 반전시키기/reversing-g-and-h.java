@@ -8,11 +8,17 @@ public class Main {
         String inputStr = sc.next();
         String targetStr = sc.next();
 
-        int cnt = 1;
+        int cnt;
         boolean isSame = false;
 
         if (inputStr.charAt(0) == targetStr.charAt(0)) {
             isSame = true;
+        }
+
+        if (isSame) {
+            cnt = 0;
+        } else {
+            cnt = 1;
         }
 
         for (int i=1; i<n; i++) {
