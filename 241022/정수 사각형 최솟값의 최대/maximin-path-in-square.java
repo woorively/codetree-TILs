@@ -12,6 +12,12 @@ public class Main {
             }
         }
       
+        for(int i = 1; i < n; i++)
+            dp[i][0] = Math.min(dp[i-1][0], dp[i][0]);
+    
+        for(int j = 1; j < n; j++)
+            dp[0][j] = Math.min(dp[0][j-1], dp[0][j]);
+
         for (int i=1; i<n; i++) {
             for (int j=1; j<n; j++) {
                 dp[i][j] = Math.min(Math.max(dp[i-1][j], dp[i][j-1]), dp[i][j]);
