@@ -20,6 +20,10 @@ public class Main {
             }
         }
 
+        if (n == 1) {
+            minMax = dp[0][0];
+        }
+
         System.out.println(minMax);
 
     }
