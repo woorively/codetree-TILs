@@ -18,52 +18,44 @@ public class Main {
 
         Node initNode = new Node(S_init);
         Node curr = initNode;
-        for (int i=0; i<n; i++) {
+        
+        for (int i = 0; i < n; i++) {
             int cmd = sc.nextInt();
 
-            if (cmd == 1) {
+            if (cmd == 1) { // 이전 노드에 추가
                 String S_value = sc.next();
                 Node prevNode = new Node(S_value);
-                if (curr.prev != null) {
-                    curr.prev.prev = curr.prev;
-                    curr.prev.next = prevNode;  
-                } 
-                curr.prev = prevNode;
                 prevNode.next = curr;
-            } else if (cmd == 2) {
+                prevNode.prev = curr.prev;
+                
+                if (curr.prev != null) {
+                    curr.prev.next = prevNode;  
+                }
+                curr.prev = prevNode;
+            } else if (cmd == 2) { // 다음 노드에 추가
                 String S_value = sc.next();
                 Node nextNode = new Node(S_value);
-                if (curr.next != null) {
-                    curr.next.next = curr.next;
-                    curr.next.prev = nextNode;
-                } 
-                curr.next = nextNode;
                 nextNode.prev = curr;
-            } else if (cmd == 3) {
+                nextNode.next = curr.next;
+
+                if (curr.next != null) {
+                    curr.next.prev = nextNode;
+                }
+                curr.next = nextNode;
+            } else if (cmd == 3) { // 이전으로 이동
                 if (curr.prev != null) {
                     curr = curr.prev;
                 }
-            } else { // 4
+            } else { // 4: 다음으로 이동
                 if (curr.next != null) {
                     curr = curr.next;
                 }
-            } 
+            }
 
-            if (curr.prev == null) {
-                System.out.print("(Null) ");
-            } else {
-                System.out.print(curr.prev.data + " ");
-            }
-            if (curr.data == null) {
-                System.out.print("(Null) ");
-            } else {
-                System.out.print(curr.data + " ");
-            }
-            if (curr.next == null) {
-                System.out.print("(Null) ");
-            } else {
-                System.out.print(curr.next.data + " ");
-            }
+            // 현재 상태 출력
+            System.out.print((curr.prev == null ? "(Null) " : curr.prev.data + " "));
+            System.out.print(curr.data + " ");
+            System.out.print((curr.next == null ? "(Null) " : curr.next.data + " "));
             System.out.println();
         }
     }
