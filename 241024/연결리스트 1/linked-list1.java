@@ -24,11 +24,19 @@ public class Main {
             if (cmd == 1) {
                 String S_value = sc.next();
                 Node prevNode = new Node(S_value);
+                if (curr.prev != null) {
+                    curr.prev.prev = curr.prev;
+                    curr.prev.next = prevNode;  
+                } 
                 curr.prev = prevNode;
                 prevNode.next = curr;
             } else if (cmd == 2) {
                 String S_value = sc.next();
                 Node nextNode = new Node(S_value);
+                if (curr.next != null) {
+                    curr.next.next = curr.next;
+                    curr.next.prev = nextNode;
+                } 
                 curr.next = nextNode;
                 nextNode.prev = curr;
             } else if (cmd == 3) {
