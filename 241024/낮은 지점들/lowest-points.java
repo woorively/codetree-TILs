@@ -5,12 +5,12 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Long> map = new HashMap<>();
 
-        int ans = 0;
+        Long ans = 0l;
         for (int i=0; i<n; i++) {
             int x = sc.nextInt();
-            int y = sc.nextInt();
+            Long y = sc.nextLong();
             
             if (map.containsKey(x)) {
                 if (y <= map.get(x)) {
