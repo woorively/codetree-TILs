@@ -18,7 +18,7 @@ public class Main {
             str = tmp;
         }
 
-        System.out.println(str.charAt(n+1));
+        System.out.println(str.charAt(n));
         
     }
 }
