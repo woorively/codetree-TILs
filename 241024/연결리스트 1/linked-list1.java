@@ -32,11 +32,11 @@ public class Main {
                 curr.next = nextNode;
                 nextNode.prev = curr;
             } else if (cmd == 3) {
-                if (curr.prev.data != null) {
+                if (curr.prev != null) {
                     curr = curr.prev;
                 }
             } else { // 4
-                if (curr.next.data != null) {
+                if (curr.next != null) {
                     curr = curr.next;
                 }
             } 
