@@ -3,26 +3,18 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt(); // 합계 금액
+        int ans = -1;
 
-        int n = sc.nextInt();
-        int ans = 0;
-
-        if (n >= 5) {
-            ans += n/5;
-            n %= 5;
-            // System.out.println(n + " " + ans);
-        } 
-
-        if (n >= 2) {
-            ans += n/2;
-            n %= 2;
-            // System.out.println(n + " " + ans);
+        for (int i = n / 5; i >= 0; i--) { // 5원 동전 최대 개수로 시작해서 감소
+            int remainder = n - (i * 5);
+            if (remainder % 2 == 0) { // 나머지가 2원으로 나누어떨어지면
+                ans = i + (remainder / 2); // 5원 동전 개수 + 2원 동전 개수
+                break; 
+            }
         }
 
-        if (n >= 1) {
-            System.out.println(-1);
-        } else {
-            System.out.println(ans);
-        }
+        System.out.println(ans);
     }
 }
