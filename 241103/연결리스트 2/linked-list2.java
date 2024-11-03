@@ -77,7 +77,7 @@ public class Main {
             }
         }
 
-        for (int i = 1; i <= n; i++) { // 각 노드의 다음 노드 번호를 출력
+        for (int i = 0; i < n; i++) { // 각 노드의 다음 노드 번호를 출력
             Node curr = nodes.get(i);
             System.out.print((curr.next == null ? 0 : curr.next.data) + " ");
         }
