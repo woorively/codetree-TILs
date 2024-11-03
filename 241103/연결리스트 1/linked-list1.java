@@ -6,111 +6,57 @@ class Node {
 
     public Node(String data) {
         this.data = data;
-        this.prev = null;
-        this.next = null;
     }
 }
 
 public class Main {
-    public static void insertPrev(Node n, Node c) {
-        if (c.prev != null) {
-            n.prev = c.prev;
-            c.prev.next = n;
-        }
-
-        c.prev = n;
-        n.next = c;
-    }
-
-    public static void insertNext(Node n, Node c) {
-        if (c.next != null) {
-            c.next.prev = n;
-            n.next = c.next;
-        }
-
-        c.next = n;
-        n.prev = c;
-    }
-
-    public static void changePrev(Node c) {
-        if (c.prev != null) {
-            ///////////////////////
-            Node prevNode = c.prev;
-
-            // 현재 노드와 이전 노드의 연결 변경
-            if (prevNode.prev != null) {
-                prevNode.prev.next = c;
-            }
-            c.prev = prevNode.prev;
-
-            // 이전 노드를 현재 노드 뒤로 이동
-            prevNode.next = c.next;
-            if (c.next != null) {
-                c.next.prev = prevNode;
-            }
-            c.next = prevNode;
-            prevNode.prev = c;
-        }
-    }
-
-    public static void changeNext(Node c) {
-        if (c.next != null) {
-            // 원래의 다음 노드를 저장
-            Node nextNode = c.next;
-
-            // `nextNode` 다음 노드로 `c`를 연결
-            if (nextNode.next != null) {
-                nextNode.next.prev = c;
-                c.next = nextNode.next;
-            } else {
-                c.next = null;
-            }
-
-            // `nextNode`를 `c`의 이전 위치로 이동
-            nextNode.prev = c.prev;
-            nextNode.next = c;
-
-            if (c.prev != null) {
-                c.prev.next = nextNode;
-            }
-            
-            c.prev = nextNode;
-        }
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         String S_init = sc.next();
         int n = sc.nextInt();
 
-        Node cur = new Node(S_init);
-        for (int i=0; i<n; i++) {
+        Node initNode = new Node(S_init);
+        Node curr = initNode;
+        
+        for (int i = 0; i < n; i++) {
             int cmd = sc.nextInt();
 
-            if (cmd == 1) {
+            if (cmd == 1) { // 이전 노드에 추가
                 String S_value = sc.next();
-                insertPrev(new Node(S_value), cur);
-            } else if (cmd == 2) {
+                Node prevNode = new Node(S_value);
+                prevNode.next = curr;
+                prevNode.prev = curr.prev;
+                
+                if (curr.prev != null) {
+                    curr.prev.next = prevNode;  
+                }
+                curr.prev = prevNode;
+            } else if (cmd == 2) { // 다음 노드에 추가
                 String S_value = sc.next();
-                insertNext(new Node(S_value), cur);
-            } else if (cmd == 3) {
-                changePrev(cur);
-            } else {
-                changeNext(cur);
+                Node nextNode = new Node(S_value);
+                nextNode.prev = curr;
+                nextNode.next = curr.next;
+
+                if (curr.next != null) {
+                    curr.next.prev = nextNode;
+                }
+                curr.next = nextNode;
+            } else if (cmd == 3) { // 이전으로 이동
+                if (curr.prev != null) {
+                    curr = curr.prev;
+                }
+            } else { // 4: 다음으로 이동
+                if (curr.next != null) {
+                    curr = curr.next;
+                }
             }
 
-            // print
-            String str = "(Null)";
-
-            if (cur.prev == null) System.out.print(str + " ");
-            else System.out.print(cur.prev.data + " ");
-
-            System.out.print(cur.data + " ");
-
-            if (cur.next == null) System.out.println(str + " ");
-            else System.out.println(cur.next.data + " ");
-
+            // 현재 상태 출력
+            System.out.print((curr.prev == null ? "(Null) " : curr.prev.data + " "));
+            System.out.print(curr.data + " ");
+            System.out.print((curr.next == null ? "(Null) " : curr.next.data + " "));
+            System.out.println();
         }
     }
 }
